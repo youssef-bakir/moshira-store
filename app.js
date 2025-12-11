@@ -49,7 +49,6 @@ let cart = JSON.parse(localStorage.getItem('SHOP_CART') || '[]');
 // =====================
 // الدوال الأساسية
 // =====================
-document.addEventListener("DOMContentLoaded", forceCounters);
 
 // حفظ البيانات في localStorage
 function saveFavs() { localStorage.setItem('SHOP_FAV', JSON.stringify(favs)); }
@@ -150,29 +149,28 @@ function saveFavs() {
   localStorage.setItem('SHOP_FAV', JSON.stringify(favs));
 }
 
-// تحديث العدادات
-function updateCounters() {
-  const favCount = document.getElementById('favCountTop');
-  if(favCount) favCount.textContent = favs.length;
-}
+
 
 // تبديل حالة المفضلة عند الضغط
-function toggleFav(id, btn){
-  let favs = JSON.parse(localStorage.getItem('SHOP_FAV') || '[]');
+function toggleFav(id, btn) {
+  const pid = typeof id === 'string' ? parseInt(id) : id;
 
-  if (favs.includes(id)) {
-    favs = favs.filter(x => x !== id);
+  if(favs.includes(pid)) {
+    favs = favs.filter(x => x !== pid);
     btn.innerHTML = '<i class="fa-regular fa-heart"></i>';
+    btn.setAttribute('aria-pressed','false');
+    btn.title = 'أضف للمفضلة';
   } else {
-    favs.push(id);
+    favs.push(pid);
     btn.innerHTML = '<i class="fa-solid fa-heart"></i>';
+    btn.setAttribute('aria-pressed','true');
+    btn.title = 'إزالة من المفضلة';
   }
 
-  localStorage.setItem('SHOP_FAV', JSON.stringify(favs));
-
-  forceCounters(); // ← ← ← هنا برضو
+  saveFavs();
+  updateCounters();
+  renderFavPanel && renderFavPanel();
 }
-
 
 // تهيئة جميع أزرار المفضلة بعد تحميل الصفحة أو بعد renderProducts()
 function attachFavButtons() {
@@ -248,17 +246,15 @@ function renderAddBtns(){
 }
 
 function addToCart(id){
-  let cart = JSON.parse(localStorage.getItem('SHOP_CART') || '[]');
-
-  let item = cart.find(c => c.id === id);
-  if (item) item.qty += 1;
-  else cart.push({ id, qty: 1 });
-
-  localStorage.setItem('SHOP_CART', JSON.stringify(cart));
-
-  forceCounters(); // ← ← ← الحل هنا
+  const p = products.find(x=>x.id===id);
+  if(!p || !p.inStock) return;
+  const exist = cart.find(x=>x.id===id);
+  if(exist) exist.qty++;
+  else cart.push({...p, qty:1});
+  saveCart();
+  updateCounters();
+  renderCartPanel();
 }
-
 
 function renderCartPanel(){
   if(!cartItemsProducts || !cartTotalProducts) return;
@@ -335,7 +331,6 @@ if(goToCheckoutBtn){
   };
 }
 
-
 // init fallback
 window.favs = JSON.parse(localStorage.getItem('SHOP_FAV') || '[]');
 window.cart = JSON.parse(localStorage.getItem('SHOP_CART') || '[]');
@@ -353,86 +348,3 @@ function updateCountersSimple(){
   console.log('Counters updated -> cart:', cartTotal, 'fav:', favTotal);
 }
 updateCountersSimple();
-
-
-
-// Ensure FontAwesome loaded: if not, add quick link
-if(!document.querySelector('link[href*="fontawesome"],link[href*="font-awesome"]')){
-  const l = document.createElement('link');
-  l.rel='stylesheet';
-  l.href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css';
-  document.head.appendChild(l);
-  console.log('FontAwesome injected (fallback).');
-}
-
-// Safe toggleFav (non-destructive if existing)
-window.toggleFav = window.toggleFav || function(id, btn){
-  window.favs = JSON.parse(localStorage.getItem('SHOP_FAV')||'[]');
-  const pid = typeof id === 'string' ? parseInt(id) : id;
-
-  if(window.favs.includes(pid)){
-    window.favs = window.favs.filter(x=>x!==pid);
-    btn.innerHTML = '<i class="fa-regular fa-heart"></i>';
-    btn.setAttribute('aria-pressed','false');
-    btn.title = 'أضف للمفضلة';
-  } else {
-    window.favs.push(pid);
-    btn.innerHTML = '<i class="fa-solid fa-heart"></i>';
-    btn.setAttribute('aria-pressed','true');
-    btn.title = 'إزالة من المفضلة';
-  }
-  localStorage.setItem('SHOP_FAV', JSON.stringify(window.favs));
-  updateCountersSimple && updateCountersSimple();
-  console.log('toggleFav: now favs=', window.favs);
-};
-
-// Attach fav buttons
-document.querySelectorAll('.fav-btn').forEach(btn=>{
-  const id = btn.dataset.id ? parseInt(btn.dataset.id) : null;
-  if(!id) return;
-  // init icon
-  if(!btn.querySelector('i')){
-    if((window.favs||[]).includes(id)) btn.innerHTML = '<i class="fa-solid fa-heart"></i>';
-    else btn.innerHTML = '<i class="fa-regular fa-heart"></i>';
-  }
-  btn.onclick = (e)=>{ e.stopPropagation(); toggleFav(id, btn); };
-});
-console.log('attachFavButtons fallback done.');
-
-
-
-// ربط زر الدفع (مثال: زر id="checkoutBtn" أو id="sendWhatsapp")
-const checkout = document.getElementById('checkoutBtn') || document.getElementById('sendWhatsapp') || document.querySelector('[data-action="checkout"]');
-if(checkout){
-  checkout.onclick = ()=>{
-    // افتح واتساب لو فيه وظيفة موجودة
-    // ثم امسح السلة:
-    localStorage.removeItem('SHOP_CART');
-    window.cart = [];
-    updateCountersSimple && updateCountersSimple();
-    alert('تم مسح السلة (بعد الدفع).');
-  };
-  console.log('Checkout button hooked.');
-} else {
-  console.log('No checkout button found to hook.'); 
-}
-
-function forceCounters() {
-  // تحميل السلة والمفضلة من localStorage
-  let favs = JSON.parse(localStorage.getItem('SHOP_FAV') || '[]');
-  let cart = JSON.parse(localStorage.getItem('SHOP_CART') || '[]');
-
-  // حساب العدد
-  let cartTotal = cart.reduce((sum, item) => sum + (item.qty || 1), 0);
-  let favTotal = favs.length;
-
-  // عناصر العداد في الهيدر (كمبيوتر + موبايل)
-  document.querySelectorAll('#cartCountTop, #cartCount, .cart-count')
-    .forEach(el => el.textContent = cartTotal);
-
-  document.querySelectorAll('#favCountTop, #favCount, .fav-count')
-    .forEach(el => el.textContent = favTotal);
-
-  console.log("✔️ counters updated instantly");
-}
-
