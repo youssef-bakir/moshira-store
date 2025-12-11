@@ -269,20 +269,9 @@
           <p id="qvDesc" style="margin-top:8px;color:var(--muted)">وصف مختصر للمنتج.</p>
           <div style="margin-top:12px;font-size:18px;font-weight:800" id="qvPrice">0 ج.م</div>
 
-          <div style="margin-top:14px">
-            <label class="small">المقاس</label>
-            <select id="qvSize" class="filter-select" style="width:160px">
-              <option value="free">مقاس واحد</option>
-              <option value="s">S</option>
-              <option value="m">M</option>
-              <option value="l">L</option>
-            </select>
-          </div>
+          
 
-          <div style="display:flex;gap:8px;margin-top:18px">
-            <button id="qvAdd" class="checkout">أضف للسلة</button>
-            <button id="qvFav" class="btn ghost">♡ أضف للمفضلة</button>
-          </div>
+        
         </div>
       </div>
     </div>
@@ -302,13 +291,10 @@
 
   <!-- إعدادات JavaScript الأساسية (سيستخدم app.js لباقي المنطق) -->
   <script>
-    // بيانات المتجر للصفحة (يمكن تعديلها في app.js لاحقًا)
     window.SHOP_PAGE = {
       perPage: 6
     };
 
-    // منتجات افتراضية (مصادَر JS أيضاً في app.js) 
-    // تنسيق: id, title, price (رقم), img, inStock (bool), desc
     window.SHOP_PRODUCTS = [
       {
         id: 1,
@@ -316,7 +302,7 @@
         price: 400,
         img: "C6B83B6C-8D6E-4095-B244-1E880D77EB19.jpeg",
         inStock: true,
-        desc: "عباية بتصميم كلاسيكي أنيق، قماش ناعم مع لمسات تطريز رقيقة."
+        desc: "عباية كلاسيكية بتصميم راقٍ يجمع بين البساطة والفخامة في آن واحد. مصنوعة من خامة ناعمة وانسيابية تمنحك راحة طوال اليوم، مع قصّة محتشمة تبرز أناقتك بدون مبالغة. مناسبة للاستخدام اليومي والخروجات الهادئة، وتتميز بثبات اللون وسهولة العناية. قطعة أساسية في دولاب كل امرأة تبحث عن الجمال والراحة معًا."
       },
       {
         id: 2,
@@ -324,7 +310,7 @@
         price: 620,
         img: "50.jpg",
         inStock: false,
-        desc: "تصميم مترف بنقشة ذهبية تناسب المناسبات الرسمية."
+        desc: "عباية فاخرة بتفاصيل ذهبية لامعة تمنحك طلّة ملكية في المناسبات الرسمية. مصنوعة من خامة عالية الجودة بملمس ناعم، وتصميم دقيق يعكس الذوق الرفيع. مثالية للحفلات، الخطوبات، والمناسبات الخاصة التي تحتاجين فيها لقطعة ملفتة تجمع بين الأناقة والرقي."
       },
       {
         id: 3,
@@ -332,7 +318,7 @@
         price: 350,
         img: "download (8).jpg",
         inStock: true,
-        desc: "عباية بخامة خفيفة ومريحة للنهار والمساء."
+        desc: "عباية خفيفة ومريحة مصممة خصيصًا للاستخدام اليومي. خامتها لطيفة على البشرة وتسمح بتهوية ممتازة، مما يجعلها مناسبة لفصل الصيف والخروجات السريعة. تصميم بسيط وعملي يعطيك مظهرًا أنيقًا بدون أي تعقيد."
       },
       {
         id: 4,
@@ -340,7 +326,7 @@
         price: 890,
         img: "10543E62-96AB-484C-8736-1DF0B9CC2D46.jpeg",
         inStock: false,
-        desc: "قطعة فاخرة من الحرير مع تشطيب يدوي دقيق."
+        desc: "قطعة فنية مصنوعة من أفخم أنواع الحرير مع تشطيبات يدويّة متقنة تعكس الذوق الفاخر. تتميز بلمعة حريرية جذابة ولمسة ناعمة تخطف الأنظار. مناسبة للمناسبات الراقية، السهرات، واللقاءات الرسمية. اختيارك المثالي لإطلالة ملوكية استثنائية."
       },
       {
         id: 5,
@@ -348,15 +334,15 @@
         price: 120,
         img: "download (14).jpg",
         inStock: false,
-        desc: "نقاب ناعم وبسيط، خامة متينة وسهلة للعناية."
-    },
-    {
+        desc: "نقاب بسيط وأنيق بخامة ثابتة وملمس مريح على البشرة. عملي جدًا للاستخدام اليومي ومناسب لجميع الفصول، كما أنه سهل الغسل وثابت اللون. اختيار مثالي للنساء الباحثات عن جودة وسهولة في نفس الوقت."
+      },
+      {
         id: 6,
         title: "عباية مودرن",
         price: 480,
         img: "89F6D47A-A65F-4211-B990-F23DD2F94488.jpeg",
         inStock: true,
-        desc: "تصميم عصري بخطوط ناعمة وتفاصيل بسيطة."
+        desc: "عباية عصرية بتفاصيل حديثة ولمسات تصميم متقنة. تجمع بين البساطة والجرأة بشكل متوازن يناسب المرأة العملية. خامة مريحة، وقصّة تمنحك حرية الحركة مع شكل مرتب يناسب جميع الأوقات."
       },
       {
         id: 7,
@@ -364,7 +350,7 @@
         price: 750,
         img: "download (10).jpg",
         inStock: true,
-        desc: "عباية مزينة بالدانتيل الفاخر، مثالية للمناسبات الخاصة."
+        desc: "عباية فاخرة مزينة بالدانتيل الرقيق الذي يضيف لمسة أنثوية ناعمة. تصميمها أنيق ومناسب للمناسبات الخاصة، مع خامة مريحة وانسيابية تمنحك فخامة بدون مبالغة. قطعة مثالية للظهور بإطلالة راقية وجذابة."
       },
       {
         id: 8,
@@ -372,70 +358,264 @@
         price: 300,
         img: "download (12).jpg",
         inStock: true,
-        desc: "خامة خفيفة ومريحة تناسب الأجواء الحارة."
+        desc: "عباية بخامة خفيفة جدًا مصممة خصيصًا للأجواء الحارة. تسمح بمرور الهواء وتمنحك راحة طوال اليوم. تصميمها بسيط وعملي يناسب الخروجات اليومية والشغل والجامعة."
       },
-        {
-            id: 9,
-            title: "نقاب مزخرف",
-            price: 200,
-            img: "download (11).jpg",
-            inStock: true,
-            desc: "نقاب بتفاصيل زخرفية أنيقة تضيف لمسة جمالية."
-        },
-        {
-            id: 10,
-            title: "عباية سهرة",
-            price: 950,
-            img: "download (13).jpg",
-            inStock: false,
-            desc: "عباية فاخرة مصممة خصيصًا للسهرات والمناسبات الرسمية."
-        }
-        , {
-            id: 11,
-            title: "عباية رياضية",
-            price: 400,
-            img: "Gym outfit 🎧.jpg",
-            inStock: true,
-            desc: "عباية مريحة وعملية للأنشطة اليومية والرياضية."
-        },
-        {
-            id: 12,
-            title: "نقاب قطني",
-            price: 150,
-            img: "💖.jpg",
-            inStock: true,
-            desc: "نقاب مصنوع من القطن الناعم، مثالي للاستخدام اليومي."
-        },
-        {
-            id: 13,
-            title: "عباية مطرزة",
-            price: 680,
-            img: "download (9).jpg",
-            inStock: true,
-            desc: "عباية مزينة بتطريزات يدوية تضفي عليها لمسة فنية."
-        }
-        ,{
-            id: 14,
-            title: "نقاب مزخرف",
-            price: 250,
-            img: "download (15).jpg",
-            inStock: false,
-            desc: "نقاب بتصميم مزخرف يناسب جميع المناسبات."
-        }
-        ,
-        {
-            id: 15,
-            title: "عباية كلاسيكية",
-            price: 420,
-            img: "Abaya.jpg",
-            inStock: true,
-            desc: "عباية بتصميم كلاسيكي يناسب جميع الأذواق."
-        }
-        
+      {
+        id: 9,
+        title: "نقاب مزخرف",
+        price: 200,
+        img: "download (11).jpg",
+        inStock: true,
+        desc: "نقاب بتفاصيل زخرفية أنيقة تضيف لمسة جمال مميزة. خامته مريحة وخفيفة، مناسب للارتداء اليومي والمناسبات، ويمنحك مظهرًا جذابًا دون التنازل عن البساطة."
+      },
+      {
+        id: 10,
+        title: "عباية سهرة",
+        price: 950,
+        img: "download (13).jpg",
+        inStock: false,
+        desc: "عباية سهرة فاخرة مصممة لتجعلك مركز الاهتمام. تفاصيلها الدقيقة وخامتها الفاخرة تمنحك إطلالة مبهرة في الحفلات والمناسبات الراقية. مثالية لإظهار أناقتك بأرقى صورة."
+      },
+      {
+        id: 11,
+        title: "عباية رياضية",
+        price: 400,
+        img: "Gym outfit 🎧.jpg",
+        inStock: true,
+        desc: "عباية رياضية مريحة جدًا بتصميم عملي يناسب الحركة والنشاط اليومي. خامتها مرنة وخفيفة وتمنحك حرية كاملة أثناء المشي أو التسوق أو الخروجات السريعة. تصميم يجمع بين الراحة والأناقة."
+      },
+      {
+        id: 12,
+        title: "نقاب قطني",
+        price: 150,
+        img: "💖.jpg",
+        inStock: true,
+        desc: "نقاب مصنوع من قطن ناعم عالي الجودة يمنحك راحة في اللبس طوال اليوم. رقيق على البشرة وسهل الغسل، ومناسب تمامًا للاستخدام اليومي بكل الأجواء."
+      },
+      {
+        id: 13,
+        title: "عباية مطرزة",
+        price: 680,
+        img: "download (9).jpg",
+        inStock: true,
+        desc: "عباية بتطريزات يدوية متقنة تضفي عليها لمسة فنية ساحرة. خامتها ممتازة وتفاصيلها دقيقة جدًا، مناسبة للمناسبات والخروجات الخاصة. قطعة فخمة لكل امرأة تعشق التميز."
+      },
+      {
+        id: 14,
+        title: "نقاب مزخرف",
+        price: 250,
+        img: "download (15).jpg",
+        inStock: false,
+        desc: "نقاب بتصميم مزخرف جذاب يضيف لمسة من الأناقة والتميز. خامة خفيفة ومريحة، مناسب للمناسبات والاستخدام اليومي. مزيج مثالي بين الجمال والعملية."
+      },
+      {
+        id: 15,
+        title: "عباية كلاسيكية",
+        price: 420,
+        img: "Abaya.jpg",
+        inStock: true,
+        desc: "عباية كلاسيكية بتصميم محتشم وأنيق يناسب جميع الأوقات. خامة ناعمة ومتينة تعيش معك فترة طويلة، وقصّة مريحة تجعلها مناسبة للعمل والجامعة والخروجات اليومية. اختيار مثالي للنساء الباحثات عن البساطة الراقية."
+      }
     ];
-  </script>
+</script>
+
 
   <!-- ملف جافاسكربت العام (app.js) سيحتوي المنطق: عرض المنتجات، الفلاتر، المفضلة، السلة، واتساب -->
   <script src="app.js"></script>
+
+  <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const products = window.SHOP_PRODUCTS;
+
+  const qv = document.getElementById("quickView");
+  const qvTitle = document.getElementById("qvTitle");
+  const qvImg = document.getElementById("qvImg");
+  const qvDesc = document.getElementById("qvDesc");
+  const qvPrice = document.getElementById("qvPrice");
+  const qvClose = document.getElementById("qvClose");
+
+  // زر الإغلاق
+  qvClose.onclick = () => qv.classList.remove("open");
+
+  // أي صورة منتج ← تفتح التفاصيل
+  document.querySelectorAll(".prod-card img").forEach(img => {
+    img.addEventListener("click", () => {
+      const card = img.closest(".prod-card");
+      const id = parseInt(card.querySelector(".add-btn").dataset.id);
+
+      const product = products.find(p => p.id === id);
+      if (!product) return;
+
+      // تعبئة التفاصيل
+      qvTitle.textContent = product.title;
+      qvImg.src = product.img;
+      qvDesc.textContent = product.desc;
+      qvPrice.textContent = product.price + " ج.م";
+
+      qv.classList.add("open");
+    });
+  });
+});
+</script>
+<script>
+// ===============================================
+// 1) تحميل البيانات من localStorage
+// ===============================================
+let favs = JSON.parse(localStorage.getItem("SHOP_FAV") || "[]");
+let cart = JSON.parse(localStorage.getItem("SHOP_CART") || "[]");
+
+// تحديث عدادات السلة والمفضلة
+function updateHeaderCounters() {
+  const favCount = document.getElementById("favCountTop");
+  const cartCount = document.getElementById("cartCountTop");
+
+  favCount.textContent = favs.length;
+  cartCount.textContent = cart.reduce((s, i) => s + (i.qty || 1), 0);
+}
+updateHeaderCounters();
+
+
+// ===============================================
+// 2) فتح نافذة التفاصيل عند الضغط على صورة المنتج
+// ===============================================
+document.addEventListener("DOMContentLoaded", () => {
+  const products = window.SHOP_PRODUCTS;
+
+  const qv = document.getElementById("quickView");
+  const qvTitle = document.getElementById("qvTitle");
+  const qvImg = document.getElementById("qvImg");
+  const qvDesc = document.getElementById("qvDesc");
+  const qvPrice = document.getElementById("qvPrice");
+  const qvClose = document.getElementById("qvClose");
+
+  qvClose.onclick = () => qv.classList.remove("open");
+
+  document.querySelectorAll(".prod-card img").forEach(img => {
+    img.addEventListener("click", () => {
+      const card = img.closest(".prod-card");
+      const id = parseInt(card.querySelector(".add-btn").dataset.id);
+
+      const product = products.find(p => p.id === id);
+      if (!product) return;
+
+      qvTitle.textContent = product.title;
+      qvImg.src = product.img;
+      qvDesc.textContent = product.desc;
+      qvPrice.textContent = product.price + " ج.م";
+
+      qv.classList.add("open");
+    });
+  });
+});
+
+
+// ===============================================
+// 3) زر إضافة للمفضلة داخل Quick View
+// ===============================================
+document.getElementById("qvFavBtn").onclick = () => {
+  const title = document.getElementById("qvTitle").textContent;
+  const img = document.getElementById("qvImg").src;
+  const price = parseInt(document.getElementById("qvPrice").textContent);
+
+  if (!favs.some(p => p.title === title)) {
+    favs.push({ title, img, price });
+    localStorage.setItem("SHOP_FAV", JSON.stringify(favs));
+    updateHeaderCounters();
+    alert("تمت الإضافة إلى المفضلة ❤️");
+  } else {
+    alert("هذا المنتج موجود بالفعل في المفضلة");
+  }
+};
+
+
+// ===============================================
+// 4) زر إضافة للسلة داخل Quick View
+// ===============================================
+document.getElementById("qvCartBtn").onclick = () => {
+  const title = document.getElementById("qvTitle").textContent;
+  const img = document.getElementById("qvImg").src;
+  const price = parseInt(document.getElementById("qvPrice").textContent);
+
+  const existing = cart.find(item => item.title === title);
+
+  if (existing) {
+    existing.qty++;
+  } else {
+    cart.push({
+      title,
+      img,
+      price,
+      qty: 1
+    });
+  }
+
+  localStorage.setItem("SHOP_CART", JSON.stringify(cart));
+  updateHeaderCounters();
+  alert("تمت الإضافة إلى السلة 🛒");
+};
+
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  // إضافة للمفضلة (الأزرار الرئيسية)
+  document.body.addEventListener("click", function(e) {
+    if (e.target.closest(".fav-btn")) {
+      const btn = e.target.closest(".fav-btn");
+      const card = btn.closest(".prod-card");
+      const id = parseInt(btn.dataset.id);
+      const product = window.SHOP_PRODUCTS.find(p => p.id === id);
+      if (!product) return;
+
+      // تحقق من وجود المنتج مسبقًا في المفضلة
+      if (!favs.some(p => p.id === id)) {
+        favs.push({
+          id: product.id,
+          title: product.title,
+          img: product.img,
+          price: product.price
+        });
+        localStorage.setItem("SHOP_FAV", JSON.stringify(favs));
+        updateHeaderCounters();
+        alert("تمت الإضافة إلى المفضلة ❤️");
+      } else {
+        alert("هذا المنتج موجود بالفعل في المفضلة");
+      }
+    }
+  });
+
+  // إضافة للسلة (الأزرار الرئيسية)
+  document.body.addEventListener("click", function(e) {
+    if (e.target.closest(".add-btn")) {
+      const btn = e.target.closest(".add-btn");
+      const card = btn.closest(".prod-card");
+      const id = parseInt(btn.dataset.id);
+      const product = window.SHOP_PRODUCTS.find(p => p.id === id);
+      if (!product) return;
+
+      const existing = cart.find(item => item.id === id);
+      if (existing) {
+        existing.qty++;
+      } else {
+        cart.push({
+          id: product.id,
+          title: product.title,
+          img: product.img,
+          price: product.price,
+          qty: 1
+        });
+      }
+
+      localStorage.setItem("SHOP_CART", JSON.stringify(cart));
+      updateHeaderCounters();
+      alert("تمت الإضافة إلى السلة 🛒");
+    }
+  });
+
+});
+
+</script>
+
 </body>
 </html>
