@@ -46,6 +46,24 @@ let currentPage = 1;
 let favs = JSON.parse(localStorage.getItem('SHOP_FAV') || '[]');
 let cart = JSON.parse(localStorage.getItem('SHOP_CART') || '[]');
 
+
+const featuredGrid = document.getElementById('featuredGrid');
+
+function initFeaturedGrid() {
+  if(!featuredGrid) return;
+
+  featuredGrid.querySelectorAll('.add-btn').forEach(btn => {
+    const id = parseInt(btn.dataset.id);
+    btn.onclick = () => addToCart(id);
+  });
+
+  featuredGrid.querySelectorAll('.fav-btn').forEach(btn => {
+    const id = parseInt(btn.dataset.id);
+    btn.onclick = () => toggleFav(id, btn);
+  });
+}
+
+
 // =====================
 // الدوال الأساسية
 // =====================
@@ -311,6 +329,8 @@ if(paginationNext) paginationNext.onclick=()=>{ const totalPages=Math.ceil(produ
 // فتح/غلق المفضلة والسلة
 if(favBtnTop) favBtnTop.onclick=()=>favPanel.classList.toggle('h-hidden');
 if(cartBtnTop) cartBtnTop.onclick=()=>cartPanelProducts.classList.toggle('h-hidden') ;
+
+initFeaturedGrid();
 
 // =====================
 // البداية
