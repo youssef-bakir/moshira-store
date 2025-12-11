@@ -49,6 +49,7 @@ let cart = JSON.parse(localStorage.getItem('SHOP_CART') || '[]');
 // =====================
 // الدوال الأساسية
 // =====================
+document.addEventListener("DOMContentLoaded", forceCounters);
 
 // حفظ البيانات في localStorage
 function saveFavs() { localStorage.setItem('SHOP_FAV', JSON.stringify(favs)); }
@@ -156,25 +157,22 @@ function updateCounters() {
 }
 
 // تبديل حالة المفضلة عند الضغط
-function toggleFav(id, btn) {
-  const pid = typeof id === 'string' ? parseInt(id) : id;
+function toggleFav(id, btn){
+  let favs = JSON.parse(localStorage.getItem('SHOP_FAV') || '[]');
 
-  if(favs.includes(pid)) {
-    favs = favs.filter(x => x !== pid);
+  if (favs.includes(id)) {
+    favs = favs.filter(x => x !== id);
     btn.innerHTML = '<i class="fa-regular fa-heart"></i>';
-    btn.setAttribute('aria-pressed','false');
-    btn.title = 'أضف للمفضلة';
   } else {
-    favs.push(pid);
+    favs.push(id);
     btn.innerHTML = '<i class="fa-solid fa-heart"></i>';
-    btn.setAttribute('aria-pressed','true');
-    btn.title = 'إزالة من المفضلة';
   }
 
-  saveFavs();
-  updateCounters();
-  renderFavPanel && renderFavPanel();
+  localStorage.setItem('SHOP_FAV', JSON.stringify(favs));
+
+  forceCounters(); // ← ← ← هنا برضو
 }
+
 
 // تهيئة جميع أزرار المفضلة بعد تحميل الصفحة أو بعد renderProducts()
 function attachFavButtons() {
@@ -250,15 +248,17 @@ function renderAddBtns(){
 }
 
 function addToCart(id){
-  const p = products.find(x=>x.id===id);
-  if(!p || !p.inStock) return;
-  const exist = cart.find(x=>x.id===id);
-  if(exist) exist.qty++;
-  else cart.push({...p, qty:1});
-  saveCart();
-  updateCounters();
-  renderCartPanel();
+  let cart = JSON.parse(localStorage.getItem('SHOP_CART') || '[]');
+
+  let item = cart.find(c => c.id === id);
+  if (item) item.qty += 1;
+  else cart.push({ id, qty: 1 });
+
+  localStorage.setItem('SHOP_CART', JSON.stringify(cart));
+
+  forceCounters(); // ← ← ← الحل هنا
 }
+
 
 function renderCartPanel(){
   if(!cartItemsProducts || !cartTotalProducts) return;
@@ -415,5 +415,24 @@ if(checkout){
   console.log('Checkout button hooked.');
 } else {
   console.log('No checkout button found to hook.'); 
+}
+
+function forceCounters() {
+  // تحميل السلة والمفضلة من localStorage
+  let favs = JSON.parse(localStorage.getItem('SHOP_FAV') || '[]');
+  let cart = JSON.parse(localStorage.getItem('SHOP_CART') || '[]');
+
+  // حساب العدد
+  let cartTotal = cart.reduce((sum, item) => sum + (item.qty || 1), 0);
+  let favTotal = favs.length;
+
+  // عناصر العداد في الهيدر (كمبيوتر + موبايل)
+  document.querySelectorAll('#cartCountTop, #cartCount, .cart-count')
+    .forEach(el => el.textContent = cartTotal);
+
+  document.querySelectorAll('#favCountTop, #favCount, .fav-count')
+    .forEach(el => el.textContent = favTotal);
+
+  console.log("✔️ counters updated instantly");
 }
 
