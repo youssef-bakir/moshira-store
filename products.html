@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>مشيرة ستور — المنتجات</title>
+  <link rel="icon" type="image/png" href="Picsart_25-12-11_02-29-45-585.png">
+
+  <!-- Cairo font (نفس اللي في index) -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+  <link rel="stylesheet" href="style.css">
+
+  <meta name="description" content="صفحة المنتجات - مشيرة. مجموعة عبايات ونقابات خليجية.">
+</head>
+<body>
+  <!-- رأس الموقع (مشابه للاندكس) -->
+  <header class="site-header">
+    <div class="container header-inner">
+
+  <div class="header-top-row">
+    <div class="brand">
+      <a href="index.html" class="logo">
+        <span class="logo-mark">م</span>
+        <span class="logo-text">مشـيرة</span>
+      </a>
+      <p class="tag">عبايات ونقابات خليجية — ذوق راقي وبسيط</p>
+    </div>
+
+    <div class="tools">
+      <button id="favBtnTop" class="icon-btn" title="المفضلة">
+        <i class="fa-regular fa-heart"></i>
+        <span class="badge" id="favCountTop">0</span>
+      </button>
+
+      <button id="cartBtnTop" class="icon-btn" title="السلة">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span class="badge" id="cartCountTop">0</span>
+      </button>
+    </div>
+  </div>
+
+  <nav class="main-nav">
+    <a href="index.html" class="nav-link">الرئيسية</a>
+    <a href="products.html" class="nav-link active">المنتجات</a>
+    <a href="checkout.html" class="nav-link">الدفع</a>
+  </nav>
+
+</div>
+
+
+  </header>
+
+  <!-- شريط الفلاتر -->
+  <section class="container" style="margin-top:18px">
+    <div class="filters from-right">
+      <input id="searchInput" class="filter-search" type="text" placeholder="ابحث عن اسم المنتج أو وصف..." />
+      <select id="stockFilter" class="filter-select">
+        <option value="all">كل الحالات</option>
+        <option value="in">متوفر</option>
+        <option value="sold">نفدت الكمية</option>
+      </select>
+      <select id="sortBy" class="filter-select">
+        <option value="popular">الافتراضي</option>
+        <option value="price-asc">الأقل سعرًا</option>
+        <option value="price-desc">الأعلى سعرًا</option>
+        <option value="new">الأحدث</option>
+      </select>
+      
+    </div>
+  </section>
+
+  <!-- شبكة المنتجات -->
+  <main class="container" style="margin-top:12px">
+    <section class="products-grid from-left" id="productsGrid">
+      <!-- ستُملأ ديناميكياً بواسطة app.js -->
+      <!-- fallback (في حالة عدم تشغيل JS) -->
+      <article href="product1.html" class="prod-card">
+        <img src="71" alt="عباية كلاسيك">
+        <div class="prod-meta">
+          <h4>عباية كلاسيك</h4>
+          <div class="price">400 ج.م</div>
+        </div>
+        <div class="prod-actions">
+          <button class="fav-btn" data-id="1" title="أضف للمفضلة"><i class="fa-regular fa-heart"></i></button>
+          <button class="add-btn" data-id="1">أضف للسلة</button>
+        </div>
+      </article>
+      
+
+      <article class="prod-card sold-out">
+        <img src="C6B83B6C-8D6E-4095-B244-1E880D77EB19.jpeg" alt="عباية مطرزة">
+        <div class="prod-meta">
+          <h4>عباية بنقشة ذهبية</h4>
+          <div class="price">620 ج.م</div>
+        </div>
+        <div class="prod-actions">
+          <button class="fav-btn" data-id="2" title="أضف للمفضلة"><i class="fa-regular fa-heart"></i></button>
+          <button class="add-btn" data-id="2" disabled>نفدت الكمية</button>
+        </div>
+      </article>
+
+      <article class="prod-card">
+        <img src="https://images.unsplash.com/photo-1555529771-9a6a3a0b9f9c?auto=format&fit=crop&w=900&q=80" alt="عباية ناعمة">
+        <div class="prod-meta">
+          <h4>عباية ناعمة</h4>
+          <div class="price">350 ج.م</div>
+        </div>
+        <div class="prod-actions">
+          <button class="fav-btn" data-id="3" title="أضف للمفضلة"><i class="fa-regular fa-heart"></i></button>
+          <button class="add-btn" data-id="3">أضف للسلة</button>
+        </div>
+      </article>
+
+      <article class="prod-card">
+        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=900&q=80" alt="عباية حرير">
+        <div class="prod-meta">
+          <h4>عباية حرير فاخرة</h4>
+          <div class="price">890 ج.م</div>
+        </div>
+        <div class="prod-actions">
+          <button class="fav-btn" data-id="4" title="أضف للمفضلة"><i class="fa-regular fa-heart"></i></button>
+          <button class="add-btn" data-id="4">أضف للسلة</button>
+        </div>
+      </article>
+
+      <article class="prod-card sold-out">
+        <img src="https://images.unsplash.com/photo-1602810312364-5d6a6b9d4f3d?auto=format&fit=crop&w=900&q=80" alt="نقاب ساده">
+        <div class="prod-meta">
+          <h4>نقاب بسيط</h4>
+          <div class="price">120 ج.م</div>
+        </div>
+        <div class="prod-actions">
+          <button class="fav-btn" data-id="5" title="أضف للمفضلة"><i class="fa-regular fa-heart"></i></button>
+          <button class="add-btn" data-id="5" disabled>نفدت الكمية</button>
+        </div>
+      </article>
+
+      <article class="prod-card">
+        <img src="https://images.unsplash.com/photo-1600180758740-0d5a4a9b2f2b?auto=format&fit=crop&w=900&q=80" alt="عباية مودرن">
+        <div class="prod-meta">
+          <h4>عباية مودرن</h4>
+          <div class="price">480 ج.م</div>
+        </div>
+        <div class="prod-actions">
+          <button class="fav-btn" data-id="6" title="أضف للمفضلة"><i class="fa-regular fa-heart"></i></button>
+          <button class="add-btn" data-id="6">أضف للسلة</button>
+        </div>
+      </article>
+
+      <article class="prod-card">
+        <img src="https://images.unsplash.com/photo-1556909218-9e5f3c0f1b2b?auto=format&fit=crop&w=900&q=80" alt="عباية دانتيل">
+        <div class="prod-meta">
+          <h4>عباية دانتيل</h4>
+          <div class="price">750 ج.م</div>
+        </div>
+        <div class="prod-actions">
+          <button class="fav-btn" data-id="7" title="أضف للمفضلة"><i class="fa-regular fa-heart"></i></button>
+          <button class="add-btn" data-id="7">أضف للسلة</button>
+        </div>
+        </article>
+        <article class="prod-card">
+        <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=900&q=80" alt="عباية صيفية">
+        <div class="prod-meta">
+          <h4>عباية صيفية خفيفة</h4>
+          <div class="price">300 ج.م</div>  
+        </div>
+        <div class="prod-actions">
+          <button class="fav-btn" data-id="8" title="أضف للمفضلة"><i class="fa-regular
+    fa-heart"></i></button>
+          <button class="add-btn" data-id="8">أضف للسلة</button>
+        </div>
+      </article>    
+      <article class="prod-card">
+        <img src="https://images.unsplash.com/photo-1520975698511-8f3b6c4f4e2b?auto=format&fit=crop&w=900&q=80" alt="نقاب مزخرف">
+        <div class="prod-meta">
+          <h4>نقاب مزخرف</h4>
+          <div class="price">200 ج.م</div>  
+        </div>
+        <div class="prod-actions">
+          <button class="fav-btn" data-id="9" title="أضف للمفضلة"><i class="fa-regular fa-heart"></i></button>
+            <button class="add-btn" data-id="9">أضف للسلة</button>
+        </div>
+        </article>
+        <article class="prod-card sold-out">
+        <img src="https://images.unsplash.com/photo-1514996937319-344454492b37?auto=format&fit=crop&w=900&q=80" alt="عباية سهرة">
+        <div class="prod-meta">
+          <h4>عباية سهرة</h4>
+          <div class="price">950 ج.م</div>
+        </div>
+        <div class="prod-actions">
+          <button class="fav-btn" data-id="10" title="أضف للمفضلة"><i class="fa-regular fa-heart"></i></button>
+            <button class="add-btn" data-id="10" disabled>نفدت الكمية</button>
+        </div>
+        </article>
+        <article class="prod-card">
+        <img src="#outfits#life#lifestyle#perfume.jpg" alt="عباية رياضية">
+        
+        <div class="prod-meta">
+          <h4>عباية رياضية</h4>
+          <div class="price">450 ج.م</div>
+        </div>
+        <div class="prod-actions">
+          <button class="fav-btn" data-id="11" title="أضف للمفضلة"><i class="fa-regular fa-heart"></i></button>
+            <button class="add-btn" data-id="11">أضف للسلة</button>
+        </div>
+        </article>
+        <article class="prod-card">
+        <img src="https://images.unsplash.com/photo-1521334884684-d80222895322?auto=format&fit=crop&w=900&q=80" alt="نقاب مزخرف">
+        <div class="prod-meta">
+          <h4>نقاب مزخرف</h4>
+          <div class="price">250 ج.م</div>
+        </div>
+
+        <div class="prod-actions">
+          <button class="fav-btn" data-id="12" title="أضف للمفضلة"><i class="fa-regular fa-heart"></i></button>
+            <button class="add-btn" data-id="12">أضف للسلة</button>
+        </div>
+        </article>
+    </section>
+
+    <!-- ترقيم الصفحات (بسيط) -->
+    <div style="display:flex;justify-content:center;margin-top:18px" id="pagination">
+        <button class="btn ghost" id="nextPage">التالي</button>
+        <div style="width:12px"></div>
+        <button class="btn ghost" id="prevPage">السابق</button>
+    </div>
+  </main>
+
+  <!-- لوحة المفضلة (hidden until used) -->
+  <aside class="fav-panel h-hidden" id="favPanel">
+    <strong>المفضلة</strong>
+    <div id="favList" style="margin-top:10px">
+      <!-- عناصر المفضلة تظهر هنا -->
+      <div class="empty-state">لم تضف أي عناصر إلى المفضلة بعد.</div>
+    </div>
+  </aside>
+
+  <!-- سلة عائمة (hidden until used) -->
+  <aside class="cart-panel h-hidden" id="cartPanelProducts">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <strong>سلة مشترياتك</strong>
+      <button id="closeCartProducts" style="border:0;background:transparent;cursor:pointer"></button>
+    </div>
+    <div class="cart-items" id="cartItemsProducts" style="margin-top:8px">
+      <div class="empty-state">السلة فارغة</div>
+    </div>
+    <div class="cart-actions" style="margin-top:10px">
+      <div style="font-weight:700">المجموع: <span id="cartTotalProducts">0 ج.م</span></div>
+      <button class="checkout" id="goToCheckoutProducts">الذهاب إلى الدفع</button>
+    </div>
+  </aside>
+
+  <!-- Quick view modal -->
+  <div class="quick-view" id="quickView">
+    <div class="panel card-animate">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <h3 id="qvTitle">اسم المنتج</h3>
+        <button id="qvClose" style="border:0;background:transparent;cursor:pointer">✖</button>
+      </div>
+      <div class="prod-full" style="margin-top:12px">
+        <div>
+          <img id="qvImg" src="" alt="" style="width:100%;height:420px;object-fit:cover;border-radius:10px" />
+        </div>
+        <div class="info">
+          <div class="kicker">تفاصيل المنتج</div>
+          <p id="qvDesc" style="margin-top:8px;color:var(--muted)">وصف مختصر للمنتج.</p>
+          <div style="margin-top:12px;font-size:18px;font-weight:800" id="qvPrice">0 ج.م</div>
+
+          <div style="margin-top:14px">
+            <label class="small">المقاس</label>
+            <select id="qvSize" class="filter-select" style="width:160px">
+              <option value="free">مقاس واحد</option>
+              <option value="s">S</option>
+              <option value="m">M</option>
+              <option value="l">L</option>
+            </select>
+          </div>
+
+          <div style="display:flex;gap:8px;margin-top:18px">
+            <button id="qvAdd" class="checkout">أضف للسلة</button>
+            <button id="qvFav" class="btn ghost">♡ أضف للمفضلة</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy <span id="year"></span><span>يوسف بكير</span>  — جميع الحقوق محفوظة</p>
+      <div class="footer-links">
+        <a href="index.html">الرئيسية</a>
+        <a href="checkout.html">الدفع</a>
+        <a href="mailto:info@example.com">اتصل بنا</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- إعدادات JavaScript الأساسية (سيستخدم app.js لباقي المنطق) -->
+  <script>
+    // بيانات المتجر للصفحة (يمكن تعديلها في app.js لاحقًا)
+    window.SHOP_PAGE = {
+      perPage: 6
+    };
+
+    // منتجات افتراضية (مصادَر JS أيضاً في app.js) 
+    // تنسيق: id, title, price (رقم), img, inStock (bool), desc
+    window.SHOP_PRODUCTS = [
+      {
+        id: 1,
+        title: "عباية كلاسيك",
+        price: 400,
+        img: "C6B83B6C-8D6E-4095-B244-1E880D77EB19.jpeg",
+        inStock: true,
+        desc: "عباية بتصميم كلاسيكي أنيق، قماش ناعم مع لمسات تطريز رقيقة."
+      },
+      {
+        id: 2,
+        title: "عباية بنقشة ذهبية",
+        price: 620,
+        img: "10543E62-96AB-484C-8736-1DF0B9CC2D46.jpeg",
+        inStock: false,
+        desc: "تصميم مترف بنقشة ذهبية تناسب المناسبات الرسمية."
+    },
+    {
+        id: 3,
+        title: "عباية ناعمة",
+        price: 350,
+        img: "download (8).jpg",
+        inStock: true,
+        desc: "عباية بخامة خفيفة ومريحة للنهار والمساء."
+      },
+      {
+        id: 4,
+        title: "عباية حرير فاخرة",
+        price: 890,
+        img: "50.jpg",
+        inStock: false,
+        desc: "قطعة فاخرة من الحرير مع تشطيب يدوي دقيق."
+      },
+      {
+        id: 5,
+        title: "نقاب بسيط",
+        price: 120,
+        img: "download (14).jpg",
+        inStock: false,
+        desc: "نقاب ناعم وبسيط، خامة متينة وسهلة للعناية."
+    },
+    {
+        id: 6,
+        title: "عباية مودرن",
+        price: 480,
+        img: "89F6D47A-A65F-4211-B990-F23DD2F94488.jpeg",
+        inStock: true,
+        desc: "تصميم عصري بخطوط ناعمة وتفاصيل بسيطة."
+      },
+      {
+        id: 7,
+        title: "عباية دانتيل",
+        price: 750,
+        img: "download (10).jpg",
+        inStock: true,
+        desc: "عباية مزينة بالدانتيل الفاخر، مثالية للمناسبات الخاصة."
+      },
+      {
+        id: 8,
+        title: "عباية صيفية خفيفة",
+        price: 300,
+        img: "download (12).jpg",
+        inStock: true,
+        desc: "خامة خفيفة ومريحة تناسب الأجواء الحارة."
+      },
+        {
+            id: 9,
+            title: "نقاب مزخرف",
+            price: 200,
+            img: "download (11).jpg",
+            inStock: true,
+            desc: "نقاب بتفاصيل زخرفية أنيقة تضيف لمسة جمالية."
+        },
+        {
+            id: 10,
+            title: "عباية سهرة",
+            price: 950,
+            img: "download (13).jpg",
+            inStock: false,
+            desc: "عباية فاخرة مصممة خصيصًا للسهرات والمناسبات الرسمية."
+        }
+        , {
+            id: 11,
+            title: "عباية رياضية",
+            price: 400,
+            img: "Gym outfit 🎧.jpg",
+            inStock: true,
+            desc: "عباية مريحة وعملية للأنشطة اليومية والرياضية."
+        },
+        {
+            id: 12,
+            title: "نقاب قطني",
+            price: 150,
+            img: "💖.jpg",
+            inStock: true,
+            desc: "نقاب مصنوع من القطن الناعم، مثالي للاستخدام اليومي."
+        },
+        {
+            id: 13,
+            title: "عباية مطرزة",
+            price: 680,
+            img: "download (9).jpg",
+            inStock: true,
+            desc: "عباية مزينة بتطريزات يدوية تضفي عليها لمسة فنية."
+        }
+        ,{
+            id: 14,
+            title: "نقاب مزخرف",
+            price: 250,
+            img: "download (15).jpg",
+            inStock: false,
+            desc: "نقاب بتصميم مزخرف يناسب جميع المناسبات."
+        }
+        ,
+        {
+            id: 15,
+            title: "عباية كلاسيكية",
+            price: 420,
+            img: "Abaya.jpg",
+            inStock: true,
+            desc: "عباية بتصميم كلاسيكي يناسب جميع الأذواق."
+        }
+        
+    ];
+  </script>
+
+  <!-- ملف جافاسكربت العام (app.js) سيحتوي المنطق: عرض المنتجات، الفلاتر، المفضلة، السلة، واتساب -->
+  <script src="app.js"></script>
+</body>
+</html>

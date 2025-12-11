@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>مشيرة ستور — صفحة الدفع</title>
+  <link rel="icon" type="image/png" href="Picsart_25-12-11_02-29-45-585.png">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- رأس الموقع -->
+  <header class="site-header">
+    <div class="container header-inner">
+
+  <div class="header-top-row">
+    <div class="brand">
+      <a href="index.html" class="logo">
+        <span class="logo-mark">م</span>
+        <span class="logo-text">مشـيرة</span>
+      </a>
+      <p class="tag">عبايات ونقابات خليجية — ذوق راقي وبسيط</p>
+    </div>
+
+    <div class="tools">
+      <button id="favBtnTop" class="icon-btn" title="المفضلة">
+        <i class="fa-regular fa-heart"></i>
+        <span class="badge" id="favCountTop">0</span>
+      </button>
+
+      <button id="cartBtnTop" class="icon-btn" title="السلة">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span class="badge" id="cartCountTop">0</span>
+      </button>
+    </div>
+  </div>
+
+  <nav class="main-nav">
+    <a href="index.html" class="nav-link">الرئيسية</a>
+    <a href="products.html" class="nav-link">المنتجات</a>
+    <a href="checkout.html" class="nav-link  active">الدفع</a>
+  </nav>
+
+</div>
+<aside class="fav-panel h-hidden" id="favPanel">
+    <strong>المفضلة</strong>
+    <div id="favList" style="margin-top:10px">
+      <!-- عناصر المفضلة تظهر هنا -->
+      <div class="empty-state">لم تضف أي عناصر إلى المفضلة بعد.</div>
+    </div>
+  </aside>
+
+  <!-- سلة عائمة (hidden until used) -->
+  <aside class="cart-panel h-hidden" id="cartPanelProducts">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <strong>سلة مشترياتك</strong>
+      <button id="closeCartProducts" style="border:0;background:transparent;cursor:pointer"></button>
+    </div>
+    <div class="cart-items" id="cartItemsProducts" style="margin-top:8px">
+      <div class="empty-state">السلة فارغة</div>
+    </div>
+    <div class="cart-actions" style="margin-top:10px">
+      <div style="font-weight:700">المجموع: <span id="cartTotalProducts">0 ج.م</span></div>
+      <button class="checkout" id="goToCheckoutProducts">الدفع عبر واتساب</button>
+    </div>
+  </aside>
+
+
+  </header>
+
+  <!-- صفحة الدفع -->
+  <main class="container" style="margin-top:20px;margin-bottom:30px">
+    <h2>تفاصيل الدفع</h2>
+    <p>املأ بياناتك لإرسال طلبك عبر واتساب</p>
+
+    <div class="checkout-box from-left">
+      <div class="two-col">
+        <!-- نموذج بيانات العميل -->
+        <div>
+          <label for="custName">الاسم الكامل</label>
+          <input type="text" id="custName" placeholder="أدخل اسمك" required>
+
+          <label for="custPhone" style="margin-top:12px">رقم الهاتف</label>
+          <input type="tel" id="custPhone" placeholder="أدخل رقم الهاتف" required>
+
+          <label for="custAddress" style="margin-top:12px">العنوان</label>
+          <textarea id="custAddress" placeholder="المدينة، الحي، الشارع، إلخ" rows="4"></textarea>
+
+          <label for="custNotes" style="margin-top:12px">ملاحظات إضافية</label>
+          <textarea id="custNotes" placeholder="مثلاً: لون محدد أو مقاس معين" rows="3"></textarea>
+
+          <button class="checkout" id="sendWhatsapp" style="margin-top:20px;width:100%">أرسل الطلب عبر واتساب</button>
+        </div>
+
+        <!-- ملخص الطلب -->
+        <div class="summary">
+          <h3>ملخص الطلب</h3>
+          <div id="checkoutItems" style="margin-top:12px">
+            <div class="empty-state">السلة فارغة</div>
+          </div>
+          <div class="order-total" style="margin-top:12px">المجموع: <span id="checkoutTotal">0 ج.م</span></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy <span id="year"></span><span>يوسف بكير</span>  — جميع الحقوق محفوظة</p>
+      <div class="footer-links">
+        <a href="index.html">الرئيسية</a>
+        <a href="products.html">المنتجات</a>
+        <a href="mailto:info@example.com">اتصل بنا</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- إعداد بيانات السلة لتظهر في صفحة الدفع -->
+  <script>
+    // عند التحميل، نعرض العناصر من localStorage
+    const cart = JSON.parse(localStorage.getItem('SHOP_CART') || '[]');
+    const checkoutItems = document.getElementById('checkoutItems');
+    const checkoutTotal = document.getElementById('checkoutTotal');
+
+    function renderCheckout() {
+      if(cart.length===0){
+        checkoutItems.innerHTML='<div class="empty-state">السلة فارغة</div>';
+        checkoutTotal.textContent='0 ج.م';
+        return;
+      }
+      checkoutItems.innerHTML='';
+      let total=0;
+      cart.forEach(item=>{
+        total+=item.price*item.qty;
+        const div=document.createElement('div');
+        div.className='cart-item';
+        div.innerHTML=`<div>${item.title} × ${item.qty}</div> <div>${item.price*item.qty} ج.م</div>`;
+        checkoutItems.appendChild(div);
+      });
+      checkoutTotal.textContent=total+' ج.م';
+    }
+
+    renderCheckout();
+
+    // إرسال الطلب لواتساب
+    document.getElementById('sendWhatsapp').addEventListener('click',()=>{
+      const name=document.getElementById('custName').value.trim();
+      const phone=document.getElementById('custPhone').value.trim();
+      const address=document.getElementById('custAddress').value.trim();
+      const notes=document.getElementById('custNotes').value.trim();
+
+      if(!name || !phone){
+        alert('الرجاء ملء الاسم ورقم الهاتف.');
+        return;
+      }
+      if(cart.length===0){
+        alert('السلة فارغة.');
+        return;
+      }
+
+      let msg='مرحبا، أرغب في طلب المنتجات التالية من متجر مشيرة:%0A%0A';
+      cart.forEach(item=>{
+        msg+=`${item.title} × ${item.qty} = ${item.price*item.qty} ج.م%0A`;
+      });
+      msg+=`%0Aالمجموع: ${cart.reduce((a,b)=>a+b.price*b.qty,0)} ج.م%0A`;
+      msg+=`%0Aالاسم: ${name}%0Aالهاتف: ${phone}%0Aالعنوان: ${address}`;
+      if(notes) msg+=`%0Aملاحظات: ${notes}`;
+
+      const waURL=`https://wa.me/201018152915?text=${msg}`;
+      window.open(waURL,'_blank');
+    });
+    const checkoutBtn = document.getElementById('sendWhatsapp');
+
+checkoutBtn.onclick = () => {
+  // مسح السلة
+  localStorage.removeItem('SHOP_CART'); // أو: localStorage.setItem('SHOP_CART','[]');
+
+  // تحديث العداد لو موجود
+  const cartCount = document.getElementById('cartCountTop');
+  if(cartCount) cartCount.textContent = 0;
+
+  
+};
+
+
+    // تحديث السنة في الفوتر
+    document.getElementById('yearCheckout').textContent=new Date().getFullYear();
+  </script>
+</body>
+</html>

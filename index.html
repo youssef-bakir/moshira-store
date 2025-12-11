@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>مشيرة ستور — عبايات ونقابات</title>
+  <link rel="icon" type="image/png" href="Picsart_25-12-11_02-29-45-585.png">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+  <!-- Cairo font -->
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- ملف الاستايل الخارجي -->
+  <link rel="stylesheet" href="style.css">
+
+  <meta name="description" content="مشيرة — متجر عبايات ونقابات خليجي بسيط وأنيق. سلة، مفضلة، وطريقة دفع عبر واتساب.">
+</head>
+<body>
+  <!-- رأس الصفحة -->
+  <header class="site-header">
+    <div class="container header-inner">
+
+  <div class="header-top-row">
+    <div class="brand">
+      <a href="index.html" class="logo">
+        <span class="logo-mark">م</span>
+        <span class="logo-text">مشـيرة</span>
+      </a>
+      <p class="tag">عبايات ونقابات خليجية — ذوق راقي وبسيط</p>
+    </div>
+
+    <div class="tools">
+      <button id="favBtnTop" class="icon-btn" title="المفضلة">
+        <i class="fa-regular fa-heart"></i>
+        <span class="badge" id="favCountTop">0</span>
+      </button>
+
+      <button id="cartBtnTop" class="icon-btn" title="السلة">
+        <i class="fa-solid fa-bag-shopping"></i>
+        <span class="badge" id="cartCountTop">0</span>
+      </button>
+    </div>
+  </div>
+
+  <nav class="main-nav">
+    <a href="index.html" class="nav-link active">الرئيسية</a>
+    <a href="products.html" class="nav-link">المنتجات</a>
+    <a href="checkout.html" class="nav-link">الدفع</a>
+  </nav>
+
+</div>
+
+
+  </header>
+
+  <!-- قسم البانر / هيرو -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-text from-right">
+        <h1>عبايات بنقوش خليجية بخامات فاخرة</h1>
+        <p>تصاميم راقية تناسب كل مناسباتك — جودة، لمسة فخامة، وخدمة سريعة.</p>
+        <div class="hero-cta">
+          <a href="products.html" class="btn primary">تسوقي الآن</a>
+          <a href="#about" class="btn ghost">اعرفي المزيد</a>
+        </div>
+      </div>
+      <div class="hero-image from-left" aria-hidden="true">
+        <!-- صورة من Unsplash -->
+        <img src="—Pngtree—woman with abaya fashion_8627595.png" alt="عباية فاخرة" />
+      </div>
+    </div>
+  </section>
+
+  <!-- قسم مميزات بسيطة -->
+  <section class="features animate-top">
+    <div class="container features-grid">
+      <div class="feature">
+        <h3>خامات فاخرة</h3>
+        <p>قماش ناعم ومريح مع تشطيب دقيق.</p>
+      </div>
+      <div class="feature">
+        <h3>توصيل سريع</h3>
+        <p>خدمة توصيل موثوقة داخل الخليج.</p>
+      </div>
+      <div class="feature">
+        <h3>استبدال سهل</h3>
+        <p>سياسة استبدال مرنة لمدة محددة.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- منتجات مميزة (معاينة) -->
+  <section class="featured container">
+    <div class="section-head">
+      <h2>منتجات مختارة</h2>
+      <a href="products.html" class="btn primary">عرض كل المنتجات</a>
+    </div>
+
+    <div class="products-grid" id="featuredGrid">
+      <!-- سيتم تعبئتها ديناميكياً بواسطة app.js -->
+      <!-- عرض تجريبي إن لم يوجد JS سيظهر عناصر افتراضية -->
+      <article class="prod-card sold-out">
+        <img src="C6B83B6C-8D6E-4095-B244-1E880D77EB19.jpeg" alt="عباية كلاسيك">
+        <div class="prod-meta">
+          <h4>عباية كلاسيك</h4>
+          <div class="price">400 ج.م</div>
+        </div>
+        <div class="prod-actions">
+          <button class="fav-btn" data-id="1" title="أضف للمفضلة">♡</button>
+          <button class="add-btn" data-id="1" disabled>نفدت الكمية</button>
+        </div>
+      </article>
+
+      <article class="prod-card">
+        <img src="50.jpg" alt="عباية مطرزة">
+        <div class="prod-meta">
+          <h4>عباية مطرزة</h4>
+          <div class="price">520 ج.م</div>
+        </div>
+        <div class="prod-actions">
+          <button class="fav-btn" data-id="2" title="أضف للمفضلة">♡</button>
+          <button class="add-btn" data-id="2">أضف للسلة</button>
+        </div>
+      </article>
+
+      <article class="prod-card">
+        <img src="10543E62-96AB-484C-8736-1DF0B9CC2D46.jpeg" alt="عباية ناعمة">
+        <div class="prod-meta">
+          <h4>عباية ناعمة</h4>
+          <div class="price">350 ج.م</div>
+        </div>
+        <div class="prod-actions">
+          <button class="fav-btn" data-id="3" title="أضف للمفضلة">♡</button>
+          <button class="add-btn" data-id="3">أضف للسلة</button>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- قسم عن المتجر -->
+  <section id="about" class="about container">
+  <h2>عن مشيرة</h2>
+  <p>
+    متجر مشيرة يقدّم تشكيلة مختارة من العبايات والنقابات بطابع خليجي أنيق — تصاميم مُنتقاة وخدمة عملاء متجاوبة. 
+    نركز على البساطة في الاستخدام وجودة المنتج.
+  </p>
+  <p>
+    رؤيتنا هي أن نكون الوجهة الأولى للمرأة الباحثة عن الأناقة المحتشمة، مع الحرص على تقديم منتجات تجمع بين الأصالة والحداثة.
+  </p>
+  <p>
+    نولي اهتمامًا خاصًا بالتفاصيل الدقيقة في التصميم والخامات، لنضمن لكِ تجربة تسوّق مميزة وراحة في الارتداء.
+  </p>
+  <ul>
+    <li> خامات عالية الجودة</li>
+    <li> تصاميم عصرية بطابع خليجي</li>
+    <li> خدمة عملاء متجاوبة</li>
+    <li> شحن سريع وآمن</li>
+  </ul>
+</section>
+
+  <!-- تذييل بسيط -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy <span id="year"></span><span>يوسف بكير</span>  — جميع الحقوق محفوظة</p>
+      <div class="footer-links">
+        <a href="products.html">المنتجات</a>
+        <a href="checkout.html">الدفع</a>
+        <a href="mailto:info@example.com">اتصل بنا</a>
+      </div>
+    </div>
+  </footer>
+  <aside class="fav-panel h-hidden" id="favPanel">
+    <strong>المفضلة</strong>
+    <div id="favList" style="margin-top:10px">
+      <!-- عناصر المفضلة تظهر هنا -->
+      <div class="empty-state">لم تضف أي عناصر إلى المفضلة بعد.</div>
+    </div>
+  </aside>
+
+  <!-- سلة عائمة (hidden until used) -->
+  <aside class="cart-panel h-hidden" id="cartPanelProducts">
+    <div style="display:flex;justify-content:space-between;align-items:center">
+      <strong>سلة مشترياتك</strong>
+      <button id="closeCartProducts" style="border:0;background:transparent;cursor:pointer"></button>
+    </div>
+    <div class="cart-items" id="cartItemsProducts" style="margin-top:8px">
+      <div class="empty-state">السلة فارغة</div>
+    </div>
+    <div class="cart-actions" style="margin-top:10px">
+      <div style="font-weight:700">المجموع: <span id="cartTotalProducts">0 ج.م</span></div>
+      <button class="checkout" id="goToCheckoutProducts">الذهاب إلى الدفع</button>
+    </div>
+  </aside>
+
+  <!-- ربط ملف الجافاسكربت -->
+  <script>
+    // تمرير رقم واتساب وتهيئة بيانات بسيطة للصفحة
+    window.SHOP_CONFIG = {
+      whatsappNumber: "+201018152915",
+      storeName: "مشيرة",
+      currency: "ج.م"
+    };
+    
+    
+  </script>
+  <script>
+    // بيانات المتجر للصفحة (يمكن تعديلها في app.js لاحقًا)
+    window.SHOP_PAGE = {
+      perPage: 9
+    };
+
+    // منتجات افتراضية (مصادَر JS أيضاً في app.js) 
+    // تنسيق: id, title, price (رقم), img, inStock (bool), desc
+    window.SHOP_PRODUCTS = [
+      {
+        id: 1,
+        title: "عباية كلاسيك",
+        price: 400,
+        img: "C6B83B6C-8D6E-4095-B244-1E880D77EB19.jpeg",
+        inStock: true,
+        desc: "عباية بتصميم كلاسيكي أنيق، قماش ناعم مع لمسات تطريز رقيقة."
+      },
+      {
+        id: 2,
+        title: "عباية بنقشة ذهبية",
+        price: 620,
+        img: "10543E62-96AB-484C-8736-1DF0B9CC2D46.jpeg",
+        inStock: false,
+        desc: "تصميم مترف بنقشة ذهبية تناسب المناسبات الرسمية."
+    },
+    {
+        id: 3,
+        title: "عباية ناعمة",
+        price: 350,
+        img: "download (8).jpg",
+        inStock: true,
+        desc: "عباية بخامة خفيفة ومريحة للنهار والمساء."
+      },
+      {
+        id: 4,
+        title: "عباية حرير فاخرة",
+        price: 890,
+        img: "50.jpg",
+        inStock: false,
+        desc: "قطعة فاخرة من الحرير مع تشطيب يدوي دقيق."
+      },
+      {
+        id: 5,
+        title: "نقاب بسيط",
+        price: 120,
+        img: "download (14).jpg",
+        inStock: false,
+        desc: "نقاب ناعم وبسيط، خامة متينة وسهلة للعناية."
+    },
+    {
+        id: 6,
+        title: "عباية مودرن",
+        price: 480,
+        img: "89F6D47A-A65F-4211-B990-F23DD2F94488.jpeg",
+        inStock: true,
+        desc: "تصميم عصري بخطوط ناعمة وتفاصيل بسيطة."
+      },
+      {
+        id: 7,
+        title: "عباية دانتيل",
+        price: 750,
+        img: "download (10).jpg",
+        inStock: true,
+        desc: "عباية مزينة بالدانتيل الفاخر، مثالية للمناسبات الخاصة."
+      },
+      {
+        id: 8,
+        title: "عباية صيفية خفيفة",
+        price: 300,
+        img: "download (12).jpg",
+        inStock: true,
+        desc: "خامة خفيفة ومريحة تناسب الأجواء الحارة."
+      },
+        {
+            id: 9,
+            title: "نقاب مزخرف",
+            price: 200,
+            img: "download (11).jpg",
+            inStock: true,
+            desc: "نقاب بتفاصيل زخرفية أنيقة تضيف لمسة جمالية."
+        },
+        {
+            id: 10,
+            title: "عباية سهرة",
+            price: 950,
+            img: "download (13).jpg",
+            inStock: false,
+            desc: "عباية فاخرة مصممة خصيصًا للسهرات والمناسبات الرسمية."
+        }
+        , {
+            id: 11,
+            title: "عباية رياضية",
+            price: 400,
+            img: "Gym outfit 🎧.jpg",
+            inStock: true,
+            desc: "عباية مريحة وعملية للأنشطة اليومية والرياضية."
+        },
+        {
+            id: 12,
+            title: "نقاب قطني",
+            price: 150,
+            img: "💖.jpg",
+            inStock: true,
+            desc: "نقاب مصنوع من القطن الناعم، مثالي للاستخدام اليومي."
+        },
+        {
+            id: 13,
+            title: "عباية مطرزة",
+            price: 680,
+            img: "download (9).jpg",
+            inStock: true,
+            desc: "عباية مزينة بتطريزات يدوية تضفي عليها لمسة فنية."
+        }
+        ,{
+            id: 14,
+            title: "نقاب مزخرف",
+            price: 250,
+            img: "download (15).jpg",
+            inStock: false,
+            desc: "نقاب بتصميم مزخرف يناسب جميع المناسبات."
+        }
+        ,
+        {
+            id: 15,
+            title: "عباية كلاسيكية",
+            price: 420,
+            img: "Abaya.jpg",
+            inStock: true,
+            desc: "عباية بتصميم كلاسيكي يناسب جميع الأذواق."
+        }
+        
+    ];
+  </script>
+  
+  
+  <script src="app.js"></script>
+  
+</body>
+</html>
