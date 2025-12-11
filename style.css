@@ -338,7 +338,7 @@ a:focus, button:focus, input:focus, select:focus{outline:none;box-shadow:0 0 0 4
 /* Tiny UI polish */
 .meta-line{font-size:13px;color:var(--muted)}
 .small{font-size:13px}
-.kicker{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+.kicker{font-size:18px;font-weight: 700;text-transform:uppercase;letter-spacing:1px}
 
 /* Checkout extras */
 .coupon-row{display:flex;gap:8px;margin-top:10px}
@@ -367,7 +367,7 @@ a:focus, button:focus, input:focus, select:focus{outline:none;box-shadow:0 0 0 4
 
 /* Detailed product card styles */
 .prod-full{display:grid;grid-template-columns:420px 1fr;gap:18px}
-.prod-full .info{padding:10px}
+.prod-full .info{padding:10px ;font-size: large;font-weight: 600;color:var(--accent);}
 .price-old{color:var(--muted);text-decoration:line-through;font-size:13px}
 
 /* small-screen helpers for prod-full */
