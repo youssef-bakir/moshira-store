@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>تسجيل الدخول — مشيرة</title>
+
+  <link rel="icon" type="image/png" href="Picsart_25-12-11_02-29-45-585.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- الهيدر (نفس المتجر) -->
+<header class="site-header">
+  <div class="container header-inner">
+    <div class="header-top-row">
+      <div class="brand">
+        <a href="index.html" class="logo">
+          <span class="logo-mark">م</span>
+          <span class="logo-text">مشـيرة</span>
+        </a>
+        <p class="tag">عبايات ونقابات خليجية — ذوق راقي وبسيط</p>
+      </div>
+    </div>
+
+    <nav class="main-nav">
+      <a href="index.html" class="nav-link">الرئيسية</a>
+      <a href="products.html" class="nav-link">المنتجات</a>
+      <a href="login.html" class="nav-link active">تسجيل الدخول</a>
+    </nav>
+  </div>
+</header>
+
+<!-- صفحة اللوجين -->
+<section class="container center" style="min-height:80vh">
+  <div class="login-card from-top">
+    
+    <h2 class="login-title">تسجيل الدخول</h2>
+    <p class="login-sub">مرحباً بعودتك 👋 سجّلي دخولك لمتابعة التسوق</p>
+
+    <form class="login-form">
+      
+      <label>البريد الإلكتروني</label>
+      <div class="input-icon">
+        <i class="fa-regular fa-envelope"></i>
+        <input type="email" placeholder="example@email.com" required>
+      </div>
+
+      <label>كلمة المرور</label>
+      <div class="input-icon">
+        <i class="fa-solid fa-lock"></i>
+        <input type="password" placeholder="••••••••" required>
+      </div>
+
+      <div class="login-options">
+        <label class="remember">
+          <input type="checkbox"> تذكرني
+        </label>
+        <a href="#" class="forgot">نسيت كلمة المرور؟</a>
+      </div>
+
+      <button type="submit" class="btn primary login-btn">
+        تسجيل الدخول
+      </button>
+
+      <p class="register-link">
+        ليس لديك حساب؟
+        <a href="#">إنشاء حساب جديد</a>
+      </p>
+
+    </form>
+  </div>
+</section>
+
+<!-- الفوتر -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <p>&copy <span id="year"></span> <span>يوسف بكير</span> — جميع الحقوق محفوظة</p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
